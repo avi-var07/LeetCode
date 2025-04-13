@@ -7,6 +7,7 @@ class Solution {
             ones = (ones ^ num) & ~twos;
             twos = (twos ^ num) & ~ones;
         }
+//ones holds bits that have appeared once. twos holds bits that have appeared twice. When a bit has appeared three times, it gets cleared from both.
          return ones;
     }
     public static void main(String[] args) {
