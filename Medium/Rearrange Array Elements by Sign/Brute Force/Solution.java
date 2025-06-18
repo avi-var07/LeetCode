@@ -36,6 +36,10 @@ nums consists of equal number of positive and negative integers.
 
 It is not required to do the modifications in-place.
  */
+
+ //Brute Force Approach: 
+
+ /*Create Two  arrays, in one array store positive and in another store negative. Merge them using indexing  */
 import java.util.*;
 class Solution {
     public static int[] rearrangeArray(int[] nums) {
