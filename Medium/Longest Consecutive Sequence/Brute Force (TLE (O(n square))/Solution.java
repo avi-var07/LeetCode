@@ -23,7 +23,10 @@ Constraints:
 
 0 <= nums.length <= 105
 -109 <= nums[i] <= 109
+
  */
+
+ //Try any searching algo, will end with TLE
 
 import java.util.*;
 
