@@ -35,21 +35,20 @@ class Solution {
         for(int i = 0; i < n; i++) 
         arr[i] = sc.nextInt();
         
-        System.out.println("Enter the value of K: ");
-        int k = sc.nextInt();
-
-        System.out.println(containsNearbyDuplicate(arr, k));
+       System.out.println("Enter k: ");
+       int k =sc.nextInt();
+       System.out.println("Kth Missing Positive Number is: "+findKthPositive(arr, k));
         
         sc.close();
     }
-    public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            if(map.containsKey(nums[i])){
-                if(i-map.get(nums[i])<=k)return true;
-            }
-            map.put(nums[i], i);
+    public static int findKthPositive(int[] arr, int k) {
+        int low = 0, high = arr.length-1;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            int missing = arr[mid]-(mid+1);
+            if(missing<k)low=mid+1;
+            else high=mid-1;
         }
-        return false;
+        return k+high+1;
     }
 }
