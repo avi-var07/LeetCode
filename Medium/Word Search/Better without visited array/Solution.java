@@ -58,7 +58,7 @@ class Solution{
     public static boolean exist(char[][] board, String word) {
         int m = board.length;
         int n = board[0].length;
-        int visited[][] = new int[m][n];
+        
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(board[i][j]==word.charAt(0)&&dfs(board, word, i, j, m, n, 0))return true;
