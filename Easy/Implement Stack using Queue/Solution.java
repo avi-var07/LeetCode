@@ -1,0 +1,123 @@
+/*Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
+
+Implement the MyStack class:
+
+void push(int x) Pushes element x to the top of the stack.
+int pop() Removes the element on the top of the stack and returns it.
+int top() Returns the element on the top of the stack.
+boolean empty() Returns true if the stack is empty, false otherwise.
+Notes:
+
+You must use only standard operations of a queue, which means that only push to back, peek/pop from front, size and is empty operations are valid.
+Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.
+ 
+
+Example 1:
+
+Input
+["MyStack", "push", "push", "top", "pop", "empty"]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 2, 2, false]
+
+Explanation
+MyStack myStack = new MyStack();
+myStack.push(1);
+myStack.push(2);
+myStack.top(); // return 2
+myStack.pop(); // return 2
+myStack.empty(); // return False
+ 
+
+Constraints:
+
+1 <= x <= 9
+At most 100 calls will be made to push, pop, top, and empty.
+All the calls to pop and top are valid.
+ 
+
+Follow-up: Can you implement the stack using only one queue? */
+
+import java.util.*;
+
+class Solution{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        MyStack st  =new MyStack();
+        System.out.println("Enter number of operations: ");
+        int op = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Available operations: push, pop, top, empty");
+        for (int i = 0; i < op; i++) {
+            System.out.print("Enter operation: ");
+            String s = sc.nextLine().toLowerCase();
+
+            switch (s) {
+                case "push":
+                    System.out.print("Enter value to push: ");
+                    int val = sc.nextInt();
+                    sc.nextLine();
+                    st.push(val);
+                    System.out.println(val + " pushed.");
+                    break;
+
+                case "pop":
+                    if (st.empty()) System.out.println("Stack is empty!");
+                    else System.out.println("Popped: " + st.pop());
+                    break;
+
+                case "top":
+                    if (st.empty()) System.out.println("Stack is empty!");
+                    else System.out.println("Top element: " + st.top());
+                    break;
+
+                case "empty":
+                    System.out.println("Stack empty? " + st.empty());
+                    break;
+
+                default:
+                    System.out.println("Invalid operation!");
+                    break;
+            }
+        }
+
+        sc.close();
+    }
+}
+class MyStack {
+    Queue<Integer>q = new LinkedList<>();
+    public MyStack() {
+        
+    }
+    
+    public void push(int x) {
+        int s = q.size();
+        q.offer(x);
+        for(int i=0;i<s;i++)q.offer(q.poll());
+            
+        
+    }
+    
+    public int pop() {
+        return q.poll();
+    }
+    
+    public int top() {
+        return q.peek();
+    }
+    
+    public boolean empty() {
+        if(q.size()==0)return true;
+
+        return false;
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
