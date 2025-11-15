@@ -33,6 +33,9 @@ class Solution{
         System.out.println("Enter "+n+" elements: ");
         for(int i=0;i<n;i++) arr[i] = sc.nextInt();
 
+        int ans[] = dailyTemperatures(arr);
+        for(int ele: ans)System.out.print(ele+" ");
+        
         sc.close();
     }
     public static int[] dailyTemperatures(int[] temperatures) {
