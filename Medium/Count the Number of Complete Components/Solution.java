@@ -51,7 +51,7 @@ class Solution{
             arr[i][1] = sc.nextInt();
         }
 
-        System.out.println(countCompleteComponents(e, arr));
+        System.out.println(countCompleteComponents(V, arr));
 
         sc.close();
     }
