@@ -70,8 +70,7 @@ class Solution{
         dist[0][0]=0;
         PriorityQueue<Pair>pq = new PriorityQueue<>((a,b)->a.wt-b.wt);
         pq.add(new Pair(0,0, 0));
-        int ans = Integer.MAX_VALUE;
-
+      
         int drow[]={-1,1,0,0};
         int dcol[]={0,0,1,-1};
         while(!pq.isEmpty()){
@@ -80,7 +79,7 @@ class Solution{
             int c1=p.col;
             int effort =p.wt;
             if(r1==m-1&&c1==n-1)return effort;
-            int maxi = Integer.MIN_VALUE;
+
             for(int i=0;i<4;i++){
                 int nrow = r1+drow[i];
                 int ncol =c1+dcol[i];
