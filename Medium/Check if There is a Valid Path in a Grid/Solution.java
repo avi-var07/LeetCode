@@ -63,9 +63,6 @@ class Solution{
     public static boolean hasValidPath(int[][] grid) {
         int m = grid.length;
         int n =grid[0].length;
-        
-        int drow[]={-1,1,0,0};
-        int dcol[]={0,0,-1,1};
 
         Map<Integer, int[][]>map = new HashMap<>();
         map.put(1, new int[][]{{0,-1},{0,1}});
