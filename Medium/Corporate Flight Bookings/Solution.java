@@ -60,19 +60,31 @@ class Solution{
         sc.close();
     }
     public static int[] corpFlightBookings(int[][] bookings, int n) {
-        int ans[] = new int[n];
+        // int ans[] = new int[n];
 
-        for(var ele: bookings){
-            int start = ele[0]-1;
-            int end = ele[1];
-            int value = ele[2];
+        // for(int ele[]: bookings){
+        //     int start=ele[0]-1;
+        //     int end=ele[1]-1;
+        //     int seats=ele[2];
 
-            ans[start]+=value;
-            if(end<n)ans[end]-=value;
+        //     for(int i=start;i<=end;i++)ans[i]+=seats;
+        // }
+        // return ans;
+
+
+        int diff[] = new int[n];
+
+        for(int ele[]: bookings){
+            int l=ele[0]-1;
+            int r=ele[1]-1;
+            int seats =ele[2];
+
+            diff[l]+=seats;
+            if(r+1<n)diff[r+1]-=seats;
         }
-        
-        for(int i=1;i<n;i++)ans[i]+=ans[i-1];
 
-        return ans;
+        for(int i=1;i<n;i++)diff[i]+=diff[i-1];
+
+        return diff;
     }
 }
